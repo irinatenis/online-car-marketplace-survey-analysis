@@ -1,0 +1,41 @@
+# Import a library
+import numpy as np
+import pandas as pd
+import docx
+from datetime import datetime
+import pyreadstat
+
+#  Read SPSS file
+spss_file_path = ('Marketing Research.sav')
+
+df, meta = pyreadstat.read_sav(spss_file_path, apply_value_formats=True)
+
+# Save output as csv
+csv_file_path =('Marketing Research.csv')
+df.to_csv(csv_file_path, index=False)
+print(df.head())
+
+# Display column names
+print(df.columns)
+
+# Get the shape (rows, columns)
+print(f"Dataset shape: {df.shape}")
+
+# Overview of data types and non-null counts
+print(df.info())
+# print(f"SPSS file '{spss_file_path}' successfully converted to CSV: '{csv_file_path}'"
+
+
+print( meta.column_labels)
+
+# Get variable labels from meta and set them as column names
+variable_labels = meta.column_labels
+df.columns = variable_labels  # Replace column names with variable labels
+print(df.columns)
+
+# # DEMOGRAPHICS
+race=df['What is your race?'].values_count()
+print(race)
+
+
+
