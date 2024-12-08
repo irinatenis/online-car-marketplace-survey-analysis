@@ -34,7 +34,7 @@ df.columns = variable_labels  # Replace column names with variable labels
 print(df.columns)
 
 # # DEMOGRAPHICS
-race=df['What is your race?'].values_count()
+race=df['What is your race?'].value_counts()
 print(race)
 
 
